@@ -18,8 +18,7 @@ public class FundacionesDAO {
      public ArrayList<Fundaciones> consultarFundaciones() {
         ArrayList<Fundaciones> lista = new ArrayList<>();
         ConexionBD con = new ConexionBD();
-         System.out.println("Conectado");
-        ResultSet rs = con.ejecutarQuery("SELECT idFundacion, Nombre, Direccion, Email,Representante,URL,Telefono, Username, Password FROM Fundaciones ");
+        ResultSet rs = con.ejecutarQuery("SELECT idFundacion, Nombre, Direccion, Email, Representante, URL, Telefono, Fundacionescol, Username, Password FROM fundaciones ");
         try {
             while (rs.next()) {
                 int idFundacion = rs.getInt("idFundacion");
@@ -29,11 +28,11 @@ public class FundacionesDAO {
                 String Representante = rs.getString("Representante");
                 String URL = rs.getString("URL");
                 String Telefono = rs.getString("Telefono");
-                //String Fundacionescol = rs.getString("Fundacionescol");
+                String Fundacionescol = rs.getString("Fundacionescol");
                 String Username = rs.getString("Username");
                 String Password = rs.getString("Password");
                 
-                Fundaciones j = new Fundaciones(idFundacion, Nombre, Direccion, Email, Representante, URL, Telefono, Username, Password);
+                Fundaciones j = new Fundaciones(idFundacion, Nombre, Direccion, Email, Representante, URL, Telefono, Fundacionescol, Username, Password);
                 lista.add(j);
             }
         } catch (SQLException ex) {
@@ -41,7 +40,34 @@ public class FundacionesDAO {
         }
         return lista;
     }
-    
-    
-    
+      public int guardarNuevaFundacion(Fundaciones j) {
+       
+        ConexionBD con = new ConexionBD();
+        
+        String Nombre = j.getNombre();
+        String Direccion = j.getDireccion();
+        String Email = j.getEmail();
+        String Representante = j.getRepresentante();
+        String URL = j.getURL();
+        String Telefono = j.getTelefono();
+        String Fundacionescol = j.getFundacionescol();
+        String Username = j.getUsername();
+        String Password = j.getPassword();
+                        
+                            
+        String sql = "INSERT INTO fundaciones (Nombre, Direccion, Email, Representante, URL,Telefono, Fundacionescol, Username, Password) VALUES ('"+Nombre+"', '"+Direccion+"', '"+Email+"', '"+Representante+"', '"+URL+"', '"+Telefono+"', '"+Fundacionescol+"', '"+Username+"', '"+Password+"') ";
+        //System.out.println(sql);
+        ResultSet rs = con.ejecutarUpdate(sql);
+        int id = 0;
+        try {
+            if (rs.next()){
+                id = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            con.desconectar();
+            return 0; 
+        }
+        con.desconectar();
+        return id;
+    }   
 }

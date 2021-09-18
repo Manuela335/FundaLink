@@ -18,7 +18,7 @@ public class ConexionBD {
     private String host = "localhost:3306";
     private String baseDatos = "fundalink";
     private String username = "root";
-    private String password = "admin";
+    private String password = "root";
     private Connection conexion;
     private Statement ejecutor;
 
@@ -41,7 +41,7 @@ public class ConexionBD {
             conexion = DriverManager.getConnection(cadenaConexion, username, password);
             ejecutor = conexion.createStatement();
             ejecutor.setQueryTimeout(30);  // set timeout to 30 sec.
-            System.out.println("conexión creada: "+conexion);
+            //System.out.println("conexión creada: "+conexion);
         }
         catch(Exception e)
         {

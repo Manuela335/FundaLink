@@ -17,6 +17,7 @@
     </head>
     <body>
         <div class="container mt-5"> 
+            <h2 Style="text-align:center"> Logo FundaLink </h2>
             <h3 class="mb-3">Lista de Fundaciones</h3>
             <hr>
             <form>
@@ -26,7 +27,8 @@
                     <button type="button" class="btn btn-light col-sm-1"><i class="bi bi-search"></i></button>
                 </div>
 
-                <table class="table">
+                <form>
+                    <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">Id</th>
@@ -36,7 +38,7 @@
                             <th scope="col">Representante</th>
                             <th scope="col">Url</th>
                             <th scope="col">Teléfono</th>
-                            <th scope="col">Fundacionescol</th>
+                            <th scope="col">Tipo</th>
                             <th scope="col">Usuario</th>
                             <th scope="col">Contraseña</th>
                         </tr>
@@ -46,8 +48,10 @@
                         boolean hayDatos = coleccion.cargarFundaciones();
                     %>
                     <tbody>
-                        <% if (hayDatos) { %>
-                        <%  for (Fundaciones j : coleccion.getLista()) { %>
+                        <% if (hayDatos) { 
+                          for (Fundaciones j : coleccion.getLista()) { %>
+                         
+                        
                         <tr>
                             <td scope="row"><%= j.getIdFundacion()%></td>
                             <td><%= j.getNombre() %></td>
@@ -56,6 +60,7 @@
                             <td><%= j.getRepresentante() %></td>
                             <td><%= j.getURL() %></td>
                             <td><%= j.getTelefono() %></td>
+                            <td><%= j.getFundacionescol() %></td>
                             <td><%= j.getUsername() %></td>
                             <td><%= j.getPassword() %></td>
                             <td>
@@ -63,15 +68,18 @@
                                 <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                             </td>
                         </tr>
-                        <% } %>
-                        <% } else { %>
-                        <tr>
+                        <%
+                            } %> 
+                         <% } else { %>
+                                                                    
+                        <tr>                             
                             <td colspan="5">No hay datos</td>
                         </tr>
                         <% } %>
                     </tbody>
-                </table>
+                    
+                    </table>
             </form>
         </div>
     </body>
-</html>s
+</html>
