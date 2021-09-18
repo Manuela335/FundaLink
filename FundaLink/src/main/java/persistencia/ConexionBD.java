@@ -18,7 +18,7 @@ public class ConexionBD {
     private String host = "localhost:3306";
     private String baseDatos = "fundalink";
     private String username = "root";
-    private String password = "admin";
+    private String password = "root";
     private Connection conexion;
     private Statement ejecutor;
 
@@ -31,7 +31,10 @@ public class ConexionBD {
         return (this.conexion != null);
     }
     
-    
+    /**
+     * Genera el enlace a la base de datos usando los parámetros iniciales, y 
+     * establece el tiempo de ejecución máximo en 30s
+     */
     public void conectar()
     {
         try
@@ -41,7 +44,7 @@ public class ConexionBD {
             conexion = DriverManager.getConnection(cadenaConexion, username, password);
             ejecutor = conexion.createStatement();
             ejecutor.setQueryTimeout(30);  // set timeout to 30 sec.
-            System.out.println("conexión creada: "+conexion);
+            //System.out.println("conexión creada: "+conexion);
         }
         catch(Exception e)
         {
@@ -51,6 +54,11 @@ public class ConexionBD {
     
     }
     
+    /**
+     * Ejecuta una sentencia SQL de consulta
+     * @param sql la consulta SQL que se arma para consultar registros
+     * @return un resultset con los registros obtenidos por la consulta
+     */
     public ResultSet ejecutarQuery(String sql)
     {
         ResultSet rs = null;
@@ -65,25 +73,56 @@ public class ConexionBD {
         return rs;
     }
     
+    /**
+     * Ejecuta una sentencia SQL de inserción
+     * @param sql la consulta SQL que se arma para insertar un registro
+     * @return un resultset con el id del registro que se inserta
+     */
     
-    public ResultSet ejecutarUpdate(String sql)
+    public ResultSet ejecutarInsert(String sql){
+      ResultSet rs = null;
+      try
+      {
+          int cant = ejecutor.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
+           if (cant >0){
+               
+               rs = ejecutor.getGeneratedKeys();
+           }
+          
+      }
+      catch (Exception e)
+      {
+          e.printStackTrace();
+    }
+    return rs;
+    
+       
+    }
+    
+    /**
+     * Ejecuta una sentencia SQL de modificación
+     * @param sql la consulta SQL que se arma para modificar un registro
+     * @return la cantidad de registros que se han modificado
+     */
+    public int ejecutarUpdate(String sql)
     {
-        ResultSet rs = null;
+       int cant = 0;
         try
         {
-            int cant = ejecutor.executeUpdate(sql);
-            if (cant > 0) {
-                rs = ejecutor.getGeneratedKeys();
-            }
+             cant = ejecutor.executeUpdate(sql);
+            
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
-        return rs;
+        return cant;
     }
     
-    
+    /**
+     * Cierra la conexión a la base de datos. Debe usarse siempre luego de ejecutar 
+     * una sentencia y obtener la información requerida
+     */
     public void desconectar()
     {
         try {
