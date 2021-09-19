@@ -18,7 +18,7 @@ public class Fundaciones {
     private String Representante;
     private String URL;
     private String Telefono;
-    //private String Fundacionescol;
+    private String Fundacionescol;
     private String Username;
     private String Password;
     
@@ -27,7 +27,7 @@ public class Fundaciones {
 
     }
 
-    public Fundaciones(int idFundacion, String Nombre, String Direccion, String Email, String Representante, String URL, String Telefono, String Username, String Password) {
+    public Fundaciones(int idFundacion, String Nombre, String Direccion, String Email, String Representante, String URL, String Telefono, String Fundacionescol, String Username, String Password) {
         this.idFundacion = idFundacion;
         this.Nombre = Nombre;
         this.Direccion = Direccion;
@@ -35,8 +35,9 @@ public class Fundaciones {
         this.Representante = Representante;
         this.URL = URL;
         this.Telefono = Telefono;
-        //this.Fundacionescol = Fundacionescol;
+        this.Fundacionescol = Fundacionescol;
         this.Username = Username;
+        this.Password = Password;
     }
 
     public Fundaciones(String Nombre, String Direccion, String Email, String Representante, String URL, String Telefono, String Fundacionescol, String Username, String Password) {
@@ -46,7 +47,7 @@ public class Fundaciones {
         this.Representante = Representante;
         this.URL = URL;
         this.Telefono = Telefono;
-        //this.Fundacionescol = Fundacionescol;
+        this.Fundacionescol = Fundacionescol;
         this.Username = Username;
         this.Password = Password;
     }
@@ -107,14 +108,14 @@ public class Fundaciones {
         this.Telefono = Telefono;
     }
 
-   /* public String getFundacionescol() {
+    public String getFundacionescol() {
         return Fundacionescol;
     }
 
     public void setFundacionescol(String Fundacionescol) {
         this.Fundacionescol = Fundacionescol;
     }
-*/
+
     public String getUsername() {
         return Username;
     }
