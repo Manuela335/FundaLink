@@ -1,7 +1,7 @@
 <%-- 
     Document   : fundaciones_lista
     Created on : 11/09/2021, 9:47:41 a. m.
-    Author     : E5-473
+    Author     : Arie Agudelo FundaLink
 --%>
 
 <%@page import="logica.Fundaciones"%>
@@ -13,7 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-        <title>Listado Fundaciones</title>
+        <title>Listado Fundaciones en FundaLink</title>
         
         <style>
 body {
