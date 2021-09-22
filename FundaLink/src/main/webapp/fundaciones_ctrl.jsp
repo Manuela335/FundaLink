@@ -27,7 +27,7 @@
             String Representante = request.getParameter("txtRepresentante");
             String Url = request.getParameter("txtUrl");
             String Telefono = request.getParameter("txtTelefono");
-            String Fundacionescol = request.getParameter("txtFundacionescol");
+            String Tipo = request.getParameter("txtTipo");
             String Username = request.getParameter("txtUsername");
             String Password = request.getParameter("txtPassword");
             
@@ -35,7 +35,7 @@
             
             if (accion.equals("nuevo")){
 
-                Fundaciones j = new Fundaciones (Nombre, Direccion, Email, Representante, Url, Telefono, Fundacionescol, Username, Password);
+                Fundaciones j = new Fundaciones (Nombre, Direccion, Email, Representante, Url, Telefono, Tipo, Username, Password);
                 ColeccionFundaciones coleccion= new ColeccionFundaciones();
                 boolean guardado = coleccion.guardarFundacion(j);
                 if (guardado == true) {

@@ -46,84 +46,92 @@ Logo de Fundalink
 Crear una Nueva Fundación 
 
 </h1>
+    
+     <% 
+                String accion= request.getParameter("accion");
+                if (accion.equals("editar")){
+                    int id = Integer.parseInt(request.getParameter("id"));
+                    out.println("Id recibido: "+id);
+                }
+                
+                if (accion.equals("nuevo")){
+                out.println("Vas a escribir un registro nuevo");
+                }
+                
+                if (accion.equals("borrar")){
+                    int id = Integer.parseInt(request.getParameter("id"));
+                    out.println("Vas a borrar el registro: "+id);
+                    
+                 }
+                out.println("Acción recibida: "+accion);
+            %>
   <!-- INICIO FORMULARIO HTML -->
 <form method="POST" action="fundaciones_ctrl.jsp">
 
     <div class="form-row ">
         
-        <!-- AQUI ME FALTA EL ID OJO -->
-        <div class="col md-2">
-            <div class="p-2" >
-            <label for="txtId" > Id:<span class="red">*</span></label>
-            <input type="text" class="form-control" id="txtId" name="txtId" disabled>
-            </div> 
-        </div> 
-        
-        
-        <div class="col">
+        <!-- AQUI desapareci EL ID OJO -->
+                       
+               <div class="col sm-4">
             <div class="p-2" >
             <label for="txtNombre" > Nombre:<span class="red">*</span></label>
             <input type="text" class="form-control" id="txtNombre" name="txtNombre" required>
             </div> 
         </div> 
       
-        <div class="col">
+        <div class="col sm-4">
             <div class="p-2" >
             <label for="txtDireccion" >Dirección:<span class="red">*</span></label>
             <input type="text" class="form-control"  id="txtDireccion" name="txtDireccion" required>
             </div>
         </div>
-    </div>
-
-    <div class="form-row">
-        <div class="col" >
+        <div class="col sm-4" >
             <div class="p-2">
                 <label for="txtEmail">Email:<span class="red">*</span></label>
                 <input type="email" class="form-control"  id="txtEmail" name="txtEmail"  required>
             </div>
         </div>
-	
+    </div>
 
-        <div class="col">
+    <div class="form-row">
+        
+
+        <div class="col sm-4">
             <div class="p-2">
             <label for="txtRepresentante" >Representante:<span class="red">*<span> </label>
             <input type="text" class="form-control"  id="txtRepresentante" name="txtRepresentante" required>
             </div>
         </div>
-    </div>
-
-    <div class="form-row">
-        <div class="col" >
+        <div class="col sm-4" >
             <div class="p-2">
                 <label for="txtUrl" >URL:</label>
                 <input type="url" class="form-control"  id="txtUrl" name="txtUrl"  required>
             </div>
         </div>
-	
-
-        <div class="col">
+         <div class="col sm-4">
             <div class="p-2">
             <label for="txtTelefono">Teléfono:<span class="red">*<span> </label>
             <input type="text" class="form-control"  id="txtTelefono" name="txtTelefono" required>
             </div>
         </div>
     </div>
-    
+   
     <div class="form-row">
     
-        <div class="col">
+        <div class="col sm-4">
             <div class="p-2">
             <label for="txtUsername">Usuario:<span class="red">*<span> </label>
             <input type="text" class="form-control"  id="txtUsername" name="txtUsername" required>
             </div>
         </div>
         
-        <div class="col">
+        <div class="col sm-4">
             <div class="p-2">
             <label for="txtPassword">Contraseña:<span class="red">*<span> </label>
             <input type="password" class="form-control"  id="txtPassword" name="txtPassword" required>
             </div>
         </div>
+        
     </div>
    
 
@@ -131,12 +139,12 @@ Crear una Nueva Fundación
         <div class="mx-auto">
             <div  class="p-2">
             <label >Tipo de Fundación:<span class="red">*</span></label>
-            <select class="custom-select"  required>
+            <select class="custom-select" name="txtTipo" required>
                 <option selected disabled value="">Selecciona el tipo</option>
-                <option value="1">Sociales</option>
-                <option value="2">Ambientales</option>
-                <option value="3">Culturales</option>
-                <option value="4">Otras</option>
+                <option value="Sociales">Sociales</option>
+                <option value="Ambientales">Ambientales</option>
+                <option value="Culturales">Culturales</option>
+                <option value="Otras">Otras</option>
             </select>
             </div>
         </div>

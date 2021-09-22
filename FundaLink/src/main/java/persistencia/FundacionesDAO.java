@@ -18,7 +18,7 @@ public class FundacionesDAO {
      public ArrayList<Fundaciones> consultarFundaciones() {
         ArrayList<Fundaciones> lista = new ArrayList<>();
         ConexionBD con = new ConexionBD();
-        ResultSet rs = con.ejecutarQuery("SELECT idFundacion, Nombre, Direccion, Email, Representante, URL, Telefono, Fundacionescol, Username, Password FROM fundaciones ");
+        ResultSet rs = con.ejecutarQuery("SELECT idFundacion, Nombre, Direccion, Email, Representante, URL, Telefono, Tipo, Username, Password FROM fundaciones ");
         try {
             while (rs.next()) {
                 int idFundacion = rs.getInt("idFundacion");
@@ -28,11 +28,11 @@ public class FundacionesDAO {
                 String Representante = rs.getString("Representante");
                 String URL = rs.getString("URL");
                 String Telefono = rs.getString("Telefono");
-                String Fundacionescol = rs.getString("Fundacionescol");
+                String Tipo = rs.getString("Tipo");
                 String Username = rs.getString("Username");
                 String Password = rs.getString("Password");
                 
-                Fundaciones j = new Fundaciones(idFundacion, Nombre, Direccion, Email, Representante, URL, Telefono, Fundacionescol, Username, Password);
+                Fundaciones j = new Fundaciones(idFundacion, Nombre, Direccion, Email, Representante, URL, Telefono, Tipo, Username, Password);
                 lista.add(j);
             }
         } catch (SQLException ex) {
@@ -50,12 +50,12 @@ public class FundacionesDAO {
         String Representante = j.getRepresentante();
         String URL = j.getURL();
         String Telefono = j.getTelefono();
-        String Fundacionescol = j.getFundacionescol();
+        String Tipo = j.getTipo();
         String Username = j.getUsername();
         String Password = j.getPassword();
                         
                             
-        String sql = "INSERT INTO fundaciones (Nombre, Direccion, Email, Representante, URL, Telefono, Fundacionescol, Username, Password) VALUES ('"+Nombre+"', '"+Direccion+"', '"+Email+"', '"+Representante+"', '"+URL+"', '"+Telefono+"', '"+Fundacionescol+"', '"+Username+"', '"+Password+"') ";
+        String sql = "INSERT INTO fundaciones (Nombre, Direccion, Email, Representante, URL, Telefono, Tipo, Username, Password) VALUES ('"+Nombre+"', '"+Direccion+"', '"+Email+"', '"+Representante+"', '"+URL+"', '"+Telefono+"', '"+Tipo+"', '"+Username+"', '"+Password+"') ";
         System.out.println(sql);
         ResultSet rs = con.ejecutarInsert(sql);
         int id = 0;

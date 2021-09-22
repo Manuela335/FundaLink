@@ -14,19 +14,43 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
         <title>Listado Fundaciones</title>
+        
+        <style>
+body {
+    background-color: beige;
+	
+}
+.red {
+    color: red;
+}
+ 
+#footer {
+    position: fixed;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+    background-color: black;
+    color: white;
+    text-align: center;
+    bottom: 0;
+    left: 0;
+}
+
+</style>
     </head>
     <body>
         <div class="container mt-5"> 
             <h2 Style="text-align:center"> Logo FundaLink </h2>
             <h3 class="mb-3">Lista de Fundaciones</h3>
             <hr>
-            <form>
-                <div class="row mb-3">
-                    <label for="txt1" class="col-form-label col-sm-2">Filtrar por nombre</label>
-                    <input type="text" class="col-form-control col-sm-9" id="txt1" name="txt1" value="">
+            
+                <div class="row mb-4 row-cols-auto">
+                    <label for="txt1" class="col-form-label col-sm-2">Buscar por : </label>
+                    <input type="text" class="col-form-control col-sm-6" id="txt1" name="txt1" value="">
                     
-                    <button type="button" class="btn btn-light col-sm-1"><i class="bi bi-search"></i></button>
-                    <a href=fundaciones_form.jsp> <button class="btn btn-primary" type="submit" id="btnSubmit" name="btnSubmit" value="regresar" >Nueva Fundación</button></a><!-- comment -->
+                    <button type="button" class="btn btn-light col-sm-1 ml-5"><i class="bi bi-search"></i></button>
+                    <a href="fundaciones_form.jsp?accion=nuevo"> <button class="btn btn-primary" type="button" id="nuevo" name="nuevo">Nueva Fundacion</button></a><!-- comment -->
                 </div>
 
                 <form>
@@ -41,8 +65,7 @@
                             <th scope="col">Url</th>
                             <th scope="col">Teléfono</th>
                             <th scope="col">Tipo</th>
-                            <th scope="col">Usuario</th>
-                            <th scope="col">Contraseña</th>
+                            
                         </tr>
                     </thead>
                     <%
@@ -62,12 +85,14 @@
                             <td><%= j.getRepresentante() %></td>
                             <td><%= j.getURL() %></td>
                             <td><%= j.getTelefono() %></td>
-                            <td><%= j.getFundacionescol() %></td>
-                            <td><%= j.getUsername() %></td>
-                            <td><%= j.getPassword() %></td>
+                            <td><%= j.getTipo() %></td>
+                            
                             <td>
-                                <button type="button" class="btn btn-warning"><i class="bi bi-pencil-fill"></i></button>
-                                <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                <a href="fundaciones_form.jsp?accion=editar&id=<%=j.getIdFundacion()%>"<button type="button" class="btn btn-warning" id="editar" name="editar"><i class="bi bi-pencil-fill"></i></button></a>                               
+                            </td>
+                            <td>
+                             <a href="fundaciones_form.jsp?accion=borrar&id=<%=j.getIdFundacion()%>" <button type="button" class="btn btn-danger" id="borrar" name="borrar"><i class="bi bi-trash"></i></button></a>
+                            
                             </td>
                         </tr>
                         <%

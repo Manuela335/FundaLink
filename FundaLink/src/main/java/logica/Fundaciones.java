@@ -18,7 +18,7 @@ public class Fundaciones {
     private String Representante;
     private String URL;
     private String Telefono;
-    private String Fundacionescol;
+    private String Tipo;
     private String Username;
     private String Password;
     
@@ -27,7 +27,7 @@ public class Fundaciones {
 
     }
 
-    public Fundaciones(int idFundacion, String Nombre, String Direccion, String Email, String Representante, String URL, String Telefono, String Fundacionescol, String Username, String Password) {
+    public Fundaciones(int idFundacion, String Nombre, String Direccion, String Email, String Representante, String URL, String Telefono, String Tipo, String Username, String Password) {
         this.idFundacion = idFundacion;
         this.Nombre = Nombre;
         this.Direccion = Direccion;
@@ -35,21 +35,29 @@ public class Fundaciones {
         this.Representante = Representante;
         this.URL = URL;
         this.Telefono = Telefono;
-        this.Fundacionescol = Fundacionescol;
+        this.Tipo = Tipo;
         this.Username = Username;
         this.Password = Password;
     }
 
-    public Fundaciones(String Nombre, String Direccion, String Email, String Representante, String URL, String Telefono, String Fundacionescol, String Username, String Password) {
+    public Fundaciones(String Nombre, String Direccion, String Email, String Representante, String URL, String Telefono, String Tipo, String Username, String Password) {
         this.Nombre = Nombre;
         this.Direccion = Direccion;
         this.Email = Email;
         this.Representante = Representante;
         this.URL = URL;
         this.Telefono = Telefono;
-        this.Fundacionescol = Fundacionescol;
+        this.Tipo = Tipo;
         this.Username = Username;
         this.Password = Password;
+    }
+
+    public String getTipo() {
+        return Tipo;
+    }
+
+    public void setTipo(String Tipo) {
+        this.Tipo = Tipo;
     }
 
     public int getIdFundacion() {
@@ -107,15 +115,7 @@ public class Fundaciones {
     public void setTelefono(String Telefono) {
         this.Telefono = Telefono;
     }
-
-    public String getFundacionescol() {
-        return Fundacionescol;
-    }
-
-    public void setFundacionescol(String Fundacionescol) {
-        this.Fundacionescol = Fundacionescol;
-    }
-
+   
     public String getUsername() {
         return Username;
     }
