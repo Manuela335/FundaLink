@@ -44,7 +44,18 @@ Logo de Fundalink
 </h2>
     <hr>  
 <h1 style="text-align:center"> 
-Crear una Nueva Fundación 
+  <% 
+      String etiqueta = "";
+      String accion1= request.getParameter("accion");
+      
+      if (accion1.equals("nuevo")){
+         etiqueta = "Nueva Fundación";
+      }else{
+         etiqueta = "Editar Fundación ";
+      }
+      
+    %>
+     <%= etiqueta %>
 
 </h1>
     
@@ -82,9 +93,7 @@ Crear una Nueva Fundación
                 }
                 else {
                 id=0;
-                }
-                
-              
+                }                             
                 out.println("Acción recibida: "+accion);
             %>
   <!-- INICIO FORMULARIO HTML -->
@@ -94,7 +103,7 @@ Crear una Nueva Fundación
             <div class="col sm-4" ><!-- comment -->
             <div class="p-2">
                 <label for="txtId" >Id:<span class="blue" ></span></label>
-                <input type="text" class="col-form-control " id="txtId" name="txtId" value="<%= id %>" readonly>
+                <input type="text" class="col-form-control " id="txtId" name="txtId" value="<%= id %>" disabled  readonly>
             </div>
         </div>
     </div>

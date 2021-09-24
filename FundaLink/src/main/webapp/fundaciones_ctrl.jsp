@@ -48,18 +48,14 @@
                  
                 if (guardado == true) {
                       //JOptionPane.showMessageDialog(null, "Información guardada con éxito !");
-                    out.println("Nueva Fundacion guardada con éxito");
+                     
+                      out.println("Nueva Fundacion guardada con éxito");
+                     
                 }else {
                      //JOptionPane.showMessageDialog(null, "Información  NO guardada  !");
-                    out.println("Información de fundación no guardada");
+                      out.println("Información de fundación no guardada");
 		}
-            
-            
-                                          
-           
-            
-
-            
+                                                                                     
             //out.println ("Los datos enviados fueron: Nombre: \n"+Nombre+" Direccion: \n"+Direccion+ " Email: "+Email+" Representante: "+Representante+" Url: "+Url+" Telefono: "+Telefono+" Usuario: "+Username+" Contraseña: "+Password);
         %>
         <div>
