@@ -20,40 +20,50 @@
     <body>
         <%
             
-            String id = request.getParameter("txtId");
+            int  id = Integer.parseInt(request.getParameter("txtId"));
             String Nombre = request.getParameter("txtNombre");
             String Direccion = request.getParameter("txtDireccion");
             String Email = request.getParameter("txtEmail");
             String Representante = request.getParameter("txtRepresentante");
-            String Url = request.getParameter("txtUrl");
+            String URL = request.getParameter("txtUrl");
             String Telefono = request.getParameter("txtTelefono");
             String Tipo = request.getParameter("txtTipo");
             String Username = request.getParameter("txtUsername");
             String Password = request.getParameter("txtPassword");
-            
             String accion = request.getParameter("btnSubmit");
+            
+            Fundaciones j = null;
             
             if (accion.equals("nuevo")){
 
-                Fundaciones j = new Fundaciones (Nombre, Direccion, Email, Representante, Url, Telefono, Tipo, Username, Password);
+                j = new Fundaciones(Nombre, Direccion, Email, Representante, URL, Telefono, Tipo, Username, Password);
+               
+            }
+            if (accion.equals("editar")){
+                j= new Fundaciones(id, Nombre, Direccion, Email, Representante, URL, Telefono, Tipo, Username, Password);
+            }    
+                
                 ColeccionFundaciones coleccion= new ColeccionFundaciones();
                 boolean guardado = coleccion.guardarFundacion(j);
+                 
                 if (guardado == true) {
-                    
-                        // JOptionPane.showMessageDialog(null, "Información guardada con éxito !");
+                      //JOptionPane.showMessageDialog(null, "Información guardada con éxito !");
                     out.println("Nueva Fundacion guardada con éxito");
-                }
-                else {
+                }else {
                      //JOptionPane.showMessageDialog(null, "Información  NO guardada  !");
                     out.println("Información de fundación no guardada");
 		}
-            }
             
+            
+                                          
+           
+            
+
             
             //out.println ("Los datos enviados fueron: Nombre: \n"+Nombre+" Direccion: \n"+Direccion+ " Email: "+Email+" Representante: "+Representante+" Url: "+Url+" Telefono: "+Telefono+" Usuario: "+Username+" Contraseña: "+Password);
         %>
         <div>
-            <a href=fundaciones_form.jsp> <button class="btn btn-primary" type="submit" id="btnSubmit" name="btnSubmit" value="regresar" >Regresar</button></a><!-- comment -->
+            <a href=fundaciones_lista.jsp> <button class="btn btn-primary" type="submit" id="btnSubmit" name="btnSubmit" value="regresar" >Ir a la Lista</button></a><!-- comment -->
         </div>
         </body>
 </html>

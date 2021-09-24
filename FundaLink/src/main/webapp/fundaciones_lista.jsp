@@ -44,14 +44,18 @@ body {
             <h2 Style="text-align:center"> Logo FundaLink </h2>
             <h3 class="mb-3">Lista de Fundaciones</h3>
             <hr>
+            <div class=""row">
             
                 <div class="row mb-4 row-cols-auto">
                     <label for="txt1" class="col-form-label col-sm-2">Buscar por : </label>
-                    <input type="text" class="col-form-control col-sm-6" id="txt1" name="txt1" value="">
+                    <input type="text" class="col-form-control col-sm-7" id="txt1" name="txt1" value="">
                     
-                    <button type="button" class="btn btn-light col-sm-1 ml-5"><i class="bi bi-search"></i></button>
-                    <a href="fundaciones_form.jsp?accion=nuevo"> <button class="btn btn-primary" type="button" id="nuevo" name="nuevo">Nueva Fundacion</button></a><!-- comment -->
-                </div>
+                    <button type="button" class="btn btn-light col-sm-1"><i class="bi bi-search"></i></button>
+                    <a href="fundaciones_form.jsp?accion=nuevo" class=""col-sm-2"> <button class="btn btn-primary" type="submit" id="btnNuevo" name="nuevo">Nueva Fundacion</button></a><!-- comment -->
+                </div>                           
+             
+            
+            </div>
 
                 <form>
                     <table class="table">
@@ -70,7 +74,7 @@ body {
                     </thead>
                     <%
                         ColeccionFundaciones coleccion = new ColeccionFundaciones();
-                        boolean hayDatos = coleccion.cargarFundaciones();
+                        boolean hayDatos = coleccion.cargarTodasLasFundaciones();
                     %>
                     <tbody>
                         <% if (hayDatos) { 
@@ -88,15 +92,14 @@ body {
                             <td><%= j.getTipo() %></td>
                             
                             <td>
-                                <a href="fundaciones_form.jsp?accion=editar&id=<%=j.getIdFundacion()%>"<button type="button" class="btn btn-warning" id="editar" name="editar"><i class="bi bi-pencil-fill"></i></button></a>                               
+                                <a href="fundaciones_form.jsp?accion=editar&id=<%= j.getIdFundacion() %>"<button type="button" class="btn btn-warning"><i class="bi bi-pencil-fill"></i></button></a>                               
                             </td>
                             <td>
-                             <a href="fundaciones_form.jsp?accion=borrar&id=<%=j.getIdFundacion()%>" <button type="button" class="btn btn-danger" id="borrar" name="borrar"><i class="bi bi-trash"></i></button></a>
+                             <a href="fundaciones_form.jsp?accion=editar&id=<%= j.getIdFundacion() %>" <button type="button" class="btn btn-danger" id="btnBorrar" name="borrar"><i class="bi bi-trash"></i></button></a>
                             
                             </td>
                         </tr>
-                        <%
-                            } %> 
+                        <% } %> 
                          <% } else { %>
                                                                     
                         <tr>                             

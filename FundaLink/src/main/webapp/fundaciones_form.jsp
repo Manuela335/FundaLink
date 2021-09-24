@@ -3,7 +3,8 @@
     Created on : 15/09/2021, 10:25:00 a. m.
     Author     : Ariel Agudelo
 --%>
-
+<%@page import="logica.Fundaciones"%>
+<%@page import="logica.ColeccionFundaciones"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -49,46 +50,73 @@ Crear una Nueva Fundación
     
      <% 
                 String accion= request.getParameter("accion");
+                
+                int id;
+                
+                String Nombre = "";
+                String Direccion = "";
+                String Email = "";
+                String Representante = "";
+                String URL = "";
+                String Telefono = "";
+                String Username = "";
+                String Password = "";
+                String Tipo = "";
+                               
                 if (accion.equals("editar")){
-                    int id = Integer.parseInt(request.getParameter("id"));
-                    out.println("Id recibido: "+id);
-                }
-                
-                if (accion.equals("nuevo")){
-                out.println("Vas a escribir un registro nuevo");
-                }
-                
-                if (accion.equals("borrar")){
-                    int id = Integer.parseInt(request.getParameter("id"));
-                    out.println("Vas a borrar el registro: "+id);
+                    id = Integer.parseInt(request.getParameter("id"));
                     
-                 }
+                    ColeccionFundaciones coleccion = new ColeccionFundaciones();
+                    
+                    Fundaciones j = coleccion.cargarUnaFundacion(id);
+                   
+                    Nombre = j.getNombre();
+                    Direccion = j.getDireccion();
+                    Email = j.getEmail();
+                    Representante = j.getRepresentante();
+                    URL = j.getURL();
+                    Telefono = j.getTelefono();
+                    Username = j.getUsername();
+                    Password = j.getPassword();
+                    Tipo = j.getTipo();
+                }
+                else {
+                id=0;
+                }
+                
+              
                 out.println("Acción recibida: "+accion);
             %>
   <!-- INICIO FORMULARIO HTML -->
-<form method="POST" action="fundaciones_ctrl.jsp">
-
+<form method="post" action="fundaciones_ctrl.jsp">
+    <!-- AQUI desapareci EL ID OJO -->
+    <div class="form-row " >   
+            <div class="col sm-4" ><!-- comment -->
+            <div class="p-2">
+                <label for="txtId" >Id:<span class="blue" ></span></label>
+                <input type="text" class="col-form-control " id="txtId" name="txtId" value="<%= id %>" readonly>
+            </div>
+        </div>
+    </div>
     <div class="form-row ">
-        
-        <!-- AQUI desapareci EL ID OJO -->
-                       
-               <div class="col sm-4">
+               
+            <div class="col sm-4">
             <div class="p-2" >
             <label for="txtNombre" > Nombre:<span class="red">*</span></label>
-            <input type="text" class="form-control" id="txtNombre" name="txtNombre" required>
+            <input type="text" class="form-control" id="txtNombre" name="txtNombre" value="<%= Nombre %>" required>
             </div> 
         </div> 
       
         <div class="col sm-4">
             <div class="p-2" >
             <label for="txtDireccion" >Dirección:<span class="red">*</span></label>
-            <input type="text" class="form-control"  id="txtDireccion" name="txtDireccion" required>
+            <input type="text" class="form-control"  id="txtDireccion" name="txtDireccion" value="<%= Direccion %>" required>
             </div>
         </div>
         <div class="col sm-4" >
             <div class="p-2">
                 <label for="txtEmail">Email:<span class="red">*</span></label>
-                <input type="email" class="form-control"  id="txtEmail" name="txtEmail"  required>
+                <input type="email" class="form-control"  id="txtEmail" name="txtEmail" value="<%= Email %>" required>
             </div>
         </div>
     </div>
@@ -99,19 +127,19 @@ Crear una Nueva Fundación
         <div class="col sm-4">
             <div class="p-2">
             <label for="txtRepresentante" >Representante:<span class="red">*<span> </label>
-            <input type="text" class="form-control"  id="txtRepresentante" name="txtRepresentante" required>
+            <input type="text" class="form-control"  id="txtRepresentante" name="txtRepresentante" value="<%= Representante %>"required>
             </div>
         </div>
         <div class="col sm-4" >
             <div class="p-2">
                 <label for="txtUrl" >URL:</label>
-                <input type="url" class="form-control"  id="txtUrl" name="txtUrl"  required>
+                <input type="url" class="form-control"  id="txtUrl" name="txtUrl"  value="<%= URL %>"required>
             </div>
         </div>
          <div class="col sm-4">
             <div class="p-2">
             <label for="txtTelefono">Teléfono:<span class="red">*<span> </label>
-            <input type="text" class="form-control"  id="txtTelefono" name="txtTelefono" required>
+            <input type="text" class="form-control"  id="txtTelefono" name="txtTelefono" value="<%= Telefono %>" required>
             </div>
         </div>
     </div>
@@ -121,26 +149,27 @@ Crear una Nueva Fundación
         <div class="col sm-4">
             <div class="p-2">
             <label for="txtUsername">Usuario:<span class="red">*<span> </label>
-            <input type="text" class="form-control"  id="txtUsername" name="txtUsername" required>
+            <input type="text" class="form-control"  id="txtUsername" name="txtUsername" value="<%= Username %>" required>
             </div>
         </div>
         
         <div class="col sm-4">
             <div class="p-2">
             <label for="txtPassword">Contraseña:<span class="red">*<span> </label>
-            <input type="password" class="form-control"  id="txtPassword" name="txtPassword" required>
+            <input type="password" class="form-control"  id="txtPassword" name="txtPassword" value="<%= Password %>"required>
             </div>
         </div>
         
-    </div>
+    
    
-
-<div class="form-row">
-        <div class="mx-auto">
+        <div class="col-sm-4">
             <div  class="p-2">
-            <label >Tipo de Fundación:<span class="red">*</span></label>
+            <label for ="selTipo">Tipo de Fundación:<span class="red">*</span></label>
+                                              
             <select class="custom-select" name="txtTipo" required>
-                <option selected disabled value="">Selecciona el tipo</option>
+                
+                <option selected disabled value="">Tipo: <%=Tipo %></option>
+                             
                 <option value="Sociales">Sociales</option>
                 <option value="Ambientales">Ambientales</option>
                 <option value="Culturales">Culturales</option>
@@ -148,17 +177,12 @@ Crear una Nueva Fundación
             </select>
             </div>
         </div>
-    </div>
-    <div class="form-row">
-      <div class="mx-auto">
-          <div class="p-4"></div>
-    	
-    </div>
-</div>
-</div>
+     </div>
+    
+    
     <div class="form-row">
 	<div class="mx-auto">
-        <button class="btn btn-primary" type="submit" id="btnSubmit" name="btnSubmit" value="nuevo">Guardar</button>
+        <button class="btn btn-primary" type="submit" id="btnSubmit" name="btnSubmit" value="<%= accion %>">Guardar</button>
         <button class="btn btn-success" type="reset" id="btnReset" name="btnReset">Limpiar</button>
     </div>
  </div>
