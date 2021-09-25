@@ -103,7 +103,7 @@ Logo de Fundalink
             <div class="col sm-4" ><!-- comment -->
             <div class="p-2">
                 <label for="txtId" >Id:<span class="blue" ></span></label>
-                <input type="text" class="col-form-control " id="txtId" name="txtId" value="<%= id %>" disabled  readonly>
+                <input type="text" class="col-form-control " id="txtId" name="txtId" value="<%= id %>"  readonly>
             </div>
         </div>
     </div>
