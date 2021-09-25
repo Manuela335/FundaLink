@@ -20,12 +20,12 @@
     <body>
         <%
             
-            int  id = Integer.parseInt(request.getParameter("txtId"));
+            int id = Integer.parseInt(request.getParameter("txtId"));
             String Nombre = request.getParameter("txtNombre");
             String Direccion = request.getParameter("txtDireccion");
             String Email = request.getParameter("txtEmail");
             String Representante = request.getParameter("txtRepresentante");
-            String URL = request.getParameter("txtUrl");
+            String Url = request.getParameter("txtUrl");
             String Telefono = request.getParameter("txtTelefono");
             String Tipo = request.getParameter("txtTipo");
             String Username = request.getParameter("txtUsername");
@@ -35,12 +35,15 @@
             Fundaciones j = null;
             
             if (accion.equals("nuevo")){
+            
 
-                j = new Fundaciones(Nombre, Direccion, Email, Representante, URL, Telefono, Tipo, Username, Password);
+                j = new Fundaciones(Nombre, Direccion, Email, Representante, Url, Telefono, Tipo, Username, Password);
                
             }
             if (accion.equals("editar")){
-                j= new Fundaciones(id, Nombre, Direccion, Email, Representante, URL, Telefono, Tipo, Username, Password);
+            
+                
+                j = new Fundaciones(id, Nombre, Direccion, Email, Representante, Url, Telefono, Tipo, Username, Password);
             }    
                 
                 ColeccionFundaciones coleccion= new ColeccionFundaciones();

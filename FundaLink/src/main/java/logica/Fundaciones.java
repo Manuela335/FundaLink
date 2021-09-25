@@ -52,6 +52,14 @@ public class Fundaciones {
         this.Password = Password;
     }
 
+    public String getURL() {
+        return URL;
+    }
+
+    public void setURL(String URL) {
+        this.URL = URL;
+    }
+
     public String getTipo() {
         return Tipo;
     }
@@ -100,14 +108,7 @@ public class Fundaciones {
         this.Representante = Representante;
     }
 
-    public String getURL() {
-        return URL;
-    }
-
-    public void setURL(String URL) {
-        this.URL = URL;
-    }
-
+   
     public String getTelefono() {
         return Telefono;
     }

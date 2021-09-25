@@ -1,0 +1,9 @@
+-------------------------------------------------------------------------------
+Test set: test.TestGeneral
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 4.157 sec <<< FAILURE!
+verificarCargaFundaciones(test.TestGeneral)  Time elapsed: 1.183 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at persistencia.FundacionesDAO.consultarFundaciones(FundacionesDAO.java:23)
+	at test.TestGeneral.verificarCargaFundaciones(TestGeneral.java:32)
+

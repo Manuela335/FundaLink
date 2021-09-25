@@ -36,13 +36,13 @@ public class FundacionesDAO {
                 String Direccion = rs.getString("Direccion");
                 String Email = rs.getString("Email");
                 String Representante = rs.getString("Representante");
-                String URL = rs.getString("URL");
+                String Url = rs.getString("URL");
                 String Telefono = rs.getString("Telefono");
                 String Tipo = rs.getString("Tipo");
                 String Username = rs.getString("Username");
                 String Password = rs.getString("Password");
                 
-                Fundaciones j = new Fundaciones(idFundacion, Nombre, Direccion, Email, Representante, URL, Telefono, Tipo, Username, Password);
+                Fundaciones j = new Fundaciones(idFundacion, Nombre, Direccion, Email, Representante, Url, Telefono, Tipo, Username, Password);
                 lista.add(j);
             }
         } catch (SQLException ex) {
@@ -68,13 +68,13 @@ public class FundacionesDAO {
                 String Direccion = rs.getString("Direccion");
                 String Email = rs.getString("Email");
                 String Representante = rs.getString("Representante");
-                String URL = rs.getString("URL");
+                String Url = rs.getString("URL");
                 String Telefono = rs.getString("Telefono");
                 String Tipo = rs.getString("Tipo");
                 String Username = rs.getString("Username");
                 String Password = rs.getString("Password");
                 
-                j = new Fundaciones(idFundacion, Nombre, Direccion, Email, Representante, URL, Telefono, Tipo, Username, Password);
+                j = new Fundaciones(idFundacion, Nombre, Direccion, Email, Representante, Url, Telefono, Tipo, Username, Password);
                 
             }
         } catch (SQLException ex) {
@@ -97,7 +97,7 @@ public class FundacionesDAO {
     public ArrayList<Fundaciones> consultarFundacionesPorFiltro(String filtro) {
         ArrayList<Fundaciones> lista = new ArrayList<>();
         ConexionBD con = new ConexionBD();
-        String sql = "SELECT idFundacion, Nombre,Direccion, Email, Representante, URL, Telefono, Tipo, Username, Password " +
+        String sql = "SELECT idFundacion, Nombre, Direccion, Email, Representante, URL, Telefono, Tipo, Username, Password " +
                      "FROM fundaciones" +
                      "WHERE Nombre LIKE '%" + filtro + "%' " +
                      "OR Representante LIKE '%" + filtro + "%' " +
@@ -111,13 +111,13 @@ public class FundacionesDAO {
                 String Direccion = rs.getString("Direccion");
                 String Email = rs.getString("Email");
                 String Representante = rs.getString("Representante");
-                String URL = rs.getString("URL");
+                String Url = rs.getString("URL");
                 String Telefono = rs.getString("Telefono");
                 String Tipo = rs.getString("Tipo");
                 String Username = rs.getString("Username");
                 String Password = rs.getString("Password");
                 
-                Fundaciones j = new Fundaciones(idFundacion, Nombre, Direccion, Email, Representante, URL, Telefono, Tipo, Username, Password);
+                Fundaciones j = new Fundaciones(idFundacion, Nombre, Direccion, Email, Representante, Url, Telefono, Tipo, Username, Password);
                 lista.add(j);
             }
         } catch (SQLException ex) {
@@ -136,22 +136,11 @@ public class FundacionesDAO {
      * @return un numero indicando el id generado por la base de datos.
      */
       public int guardarNuevaFundacion(Fundaciones j) {
-       
-        ConexionBD con = new ConexionBD();
-        
-        String Nombre = j.getNombre();
-        String Direccion = j.getDireccion();
-        String Email = j.getEmail();
-        String Representante = j.getRepresentante();
-        String URL = j.getURL();
-        String Telefono = j.getTelefono();
-        String Tipo = j.getTipo();
-        String Username = j.getUsername();
-        String Password = j.getPassword();
-                        
-                            
+        ConexionBD con = new ConexionBD();                                                                         
         String sql = "INSERT INTO fundaciones (Nombre, Direccion, Email, Representante, URL, Telefono, Tipo, Username, Password) "+ 
-                     "VALUES ('"+Nombre+ "', '"+Direccion+ "', '"+Email+ "', '"+Representante+ "', '"+URL+ "', '"+Telefono+ "', '"+Tipo+ "', '"+Username+ "', '"+Password+ "') ";
+                     "VALUES ('" + j.getNombre() + "', '" + j.getDireccion() + "', '" + j.getEmail() + "', '" + j.getRepresentante() + "', '" + j.getURL() + "', '" + j.getTelefono() + "', '" + j.getTipo() + "', '" + j.getUsername() + "', '" + j.getPassword() + "') ";
+        
+        
         //System.out.println(sql);
         ResultSet rs = con.ejecutarInsert(sql);
         int id = 0;

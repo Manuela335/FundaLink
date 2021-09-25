@@ -44,31 +44,34 @@ Logo de Fundalink
 </h2>
     <hr>  
 <h1 style="text-align:center"> 
-  <% 
+    <% 
       String etiqueta = "";
+      String  btnLabel = "";
       String accion1= request.getParameter("accion");
       
       if (accion1.equals("nuevo")){
          etiqueta = "Nueva Fundación";
+         btnLabel = "Guardar Fundación Nueva";
       }else{
          etiqueta = "Editar Fundación ";
+         btnLabel = "Guardar Fundación Editada";
       }
       
     %>
-     <%= etiqueta %>
+     <%= etiqueta %>   
 
+  
 </h1>
     
      <% 
                 String accion= request.getParameter("accion");
-                
                 int id;
                 
                 String Nombre = "";
                 String Direccion = "";
                 String Email = "";
                 String Representante = "";
-                String URL = "";
+                String Url = "";
                 String Telefono = "";
                 String Username = "";
                 String Password = "";
@@ -85,7 +88,7 @@ Logo de Fundalink
                     Direccion = j.getDireccion();
                     Email = j.getEmail();
                     Representante = j.getRepresentante();
-                    URL = j.getURL();
+                    Url = j.getURL();
                     Telefono = j.getTelefono();
                     Username = j.getUsername();
                     Password = j.getPassword();
@@ -94,16 +97,17 @@ Logo de Fundalink
                 else {
                 id=0;
                 }                             
-                out.println("Acción recibida: "+accion);
+                //out.println("Acción recibida: "+accion + id);
+                
             %>
   <!-- INICIO FORMULARIO HTML -->
 <form method="post" action="fundaciones_ctrl.jsp">
     <!-- AQUI desapareci EL ID OJO -->
     <div class="form-row " >   
-            <div class="col sm-4" ><!-- comment -->
+            <div class="col" ><!-- comment -->
             <div class="p-2">
                 <label for="txtId" >Id:<span class="blue" ></span></label>
-                <input type="text" class="col-form-control " id="txtId" name="txtId" value="<%= id %>" disabled  readonly>
+                <input type="text" class="col-form-control col-1 " id="txtId" name="txtId" value="<%= id %>" readonly>
             </div>
         </div>
     </div>
@@ -141,8 +145,8 @@ Logo de Fundalink
         </div>
         <div class="col sm-4" >
             <div class="p-2">
-                <label for="txtUrl" >URL:</label>
-                <input type="url" class="form-control"  id="txtUrl" name="txtUrl"  value="<%= URL %>"required>
+                <label for="txtUrl" >Url:</label>
+                <input type="url" class="form-control"  id="txtUrl" name="txtUrl"  value="<%= Url %>"required>
             </div>
         </div>
          <div class="col sm-4">
@@ -164,7 +168,7 @@ Logo de Fundalink
         
         <div class="col sm-4">
             <div class="p-2">
-            <label for="txtPassword">Contraseña:<span class="red">*<span> </label>
+            <label for="txtPass">Contraseña:<span class="red">*<span> </label>
             <input type="password" class="form-control"  id="txtPassword" name="txtPassword" value="<%= Password %>"required>
             </div>
         </div>
@@ -177,7 +181,7 @@ Logo de Fundalink
                                               
             <select class="custom-select" name="txtTipo" required>
                 
-                <option selected disabled value="">Tipo: <%=Tipo %></option>
+                <option selected disabled value="">Tipo: <%= Tipo %></option>
                              
                 <option value="Sociales">Sociales</option>
                 <option value="Ambientales">Ambientales</option>
@@ -190,9 +194,9 @@ Logo de Fundalink
     
     
     <div class="form-row">
-	<div class="mx-auto">
-        <button class="btn btn-primary" type="submit" id="btnSubmit" name="btnSubmit" value="<%= accion %>">Guardar</button>
-        <button class="btn btn-success" type="reset" id="btnReset" name="btnReset">Limpiar</button>
+	<div class="mx-auto mt-5">
+        <button class="btn btn-primary" type="submit" id="btnSubmit" name="btnSubmit" value="<%= accion %>"><%= btnLabel %></button>
+        <button class="btn btn-success ml-3" type="reset" id="btnReset" name="btnReset">Limpiar Datos</button>
     </div>
  </div>
 

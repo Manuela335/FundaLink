@@ -56,7 +56,7 @@ public class FundacionesDAO {
                         
                             
         String sql = "INSERT INTO fundaciones (Nombre, Direccion, Email, Representante, URL, Telefono, Fundacionescol, Username, Password) VALUES ('"+Nombre+"', '"+Direccion+"', '"+Email+"', '"+Representante+"', '"+URL+"', '"+Telefono+"', '"+Fundacionescol+"', '"+Username+"', '"+Password+"') ";
-        System.out.println(sql);
+        //System.out.println(sql);
         ResultSet rs = con.ejecutarInsert(sql);
         int id = 0;
         try {
