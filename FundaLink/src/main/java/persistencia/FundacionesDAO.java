@@ -97,11 +97,12 @@ public class FundacionesDAO {
     public ArrayList<Fundaciones> consultarFundacionesPorFiltro(String filtro) {
         ArrayList<Fundaciones> lista = new ArrayList<>();
         ConexionBD con = new ConexionBD();
-        String sql = "SELECT idFundacion, Nombre, Direccion, Email, Representante, URL, Telefono, Tipo, Username, Password " +
-                     "FROM fundaciones" +
+        String sql = "SELECT * " +
+                     "FROM fundaciones " +
                      "WHERE Nombre LIKE '%" + filtro + "%' " +
-                     "OR Representante LIKE '%" + filtro + "%' " +
-                     "OR URL LIKE '%" + filtro + "%' ";
+                     "OR Tipo LIKE '%" + filtro + "%' " +
+                     "OR Email LIKE '%" + filtro + "%' ";
+        
                 
         ResultSet rs = con.ejecutarQuery(sql);
         try {
@@ -114,10 +115,10 @@ public class FundacionesDAO {
                 String Url = rs.getString("URL");
                 String Telefono = rs.getString("Telefono");
                 String Tipo = rs.getString("Tipo");
-                String Username = rs.getString("Username");
-                String Password = rs.getString("Password");
+                String Username=rs.getString("Username");
+                String Password=rs.getString("Password");
                 
-                Fundaciones j = new Fundaciones(idFundacion, Nombre, Direccion, Email, Representante, Url, Telefono, Tipo, Username, Password);
+                Fundaciones j = new Fundaciones(idFundacion, Nombre, Direccion, Email, Representante, Url, Telefono, Tipo,Username, Password);
                 lista.add(j);
             }
         } catch (SQLException ex) {
